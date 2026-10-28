@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111114"><title>CinéMémo — Mes souvenirs de films</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="#">🎬 CinéMémo</a><span class="tag">TES FILMS · TES PHRASES</span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">TON CARNET DE CINÉMA</p><h1>Les films que tu n’oublies pas.</h1><p class="muted">Garde les phrases marquantes, tes notes, des liens et une galerie d’images.</p></div><button id="addTop" class="primary">＋ Ajouter un film</button></section>
+<section class="toolbar"><input id="search" type="search" placeholder="Rechercher un film, une phrase…"><select id="filter"><option value="">Toutes les catégories</option></select><select id="sort"><option value="recent">Plus récents</option><option value="title">Titre A → Z</option><option value="rating">Meilleure note</option></select></section>
+<section id="stats" class="stats"></section>
+<section id="films" class="films"></section>
+<div id="empty" class="empty hidden"><div>🍿</div><h2>Ton carnet est vide</h2><p>Ajoute ton premier film et conserve ce qui t’a marqué.</p><button class="primary" id="emptyAdd">Ajouter un film</button></div>
+</main>
+<dialog id="editor"><form id="filmForm">
+<div class="dialogHead"><div><p class="eyebrow">TON CARNET</p><h2 id="formTitle">Ajouter un film</h2></div><button type="button" class="close" id="close" aria-label="Fermer">×</button></div>
+<input type="hidden" id="filmId">
+<label>Titre du film *<input id="title" required maxlength="180" placeholder="Ex. Interstellar"></label>
+<div class="two"><label>Catégorie<input id="category" list="categories" placeholder="Ex. Science-fiction"><datalist id="categories"><option>Science-fiction</option><option>Drame</option><option>Thriller</option><option>Comédie</option><option>Animation</option><option>Documentaire</option><option>Romance</option><option>Action</option><option>Fantastique</option></datalist></label>
+<label>Note personnelle<select id="rating"><option value="0">Pas de note</option><option value="1">★☆☆☆☆ — 1/5</option><option value="2">★★☆☆☆ — 2/5</option><option value="3">★★★☆☆ — 3/5</option><option value="4">★★★★☆ — 4/5</option><option value="5">★★★★★ — 5/5</option></select></label></div>
+<label>Description / ton avis<textarea id="description" rows="3" placeholder="Ce que tu as pensé du film…"></textarea></label>
+<label>Les phrases qui t’ont marqué<textarea id="quotes" rows="4" placeholder="Une phrase par ligne (tu peux préciser le personnage)"></textarea></label>
+<label>Lien du film<input id="link" type="url" placeholder="https://…"></label>
+<label>Images — URL de la galerie<textarea id="images" rows="3" placeholder="Colle une URL d’image par ligne"></textarea><small>Utilise des liens directs vers des images (jpg, png, webp…).</small></label>
+<div class="formActions"><button type="button" class="secondary" id="cancel">Annuler</button><button class="primary" type="submit">Enregistrer</button></div>
+<p class="hint">Les films sont enregistrés dans le stockage local de ce navigateur.</p>
+</form></dialog>
+<footer>Un carnet personnel, enregistré sur cet appareil. <button id="export">Exporter mes données (JSON)</button><label class="importBtn">Importer JSON<input id="import" type="file" accept="application/json"></label></footer>
+<script src="app.js"></script>
+</body></html>
